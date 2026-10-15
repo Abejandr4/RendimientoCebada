@@ -65,8 +65,9 @@ pd.DataFrame({"ID_POLIGONO": train["ID_POLIGONO"], "Municipio": train["Municipio
 
 # ---------- 4. Datos para el dashboard
 cnt_mun = train["Municipio"].value_counts()
-tab = df[["ID_POLIGONO", "CONJUNTO", "Estado", "Municipio", "lon", "lat", "x_m", "y_m", "area_ha_geom", Y] + COLS].copy()
-tab["pred"] = np.nan
+cols_tab = list(dict.fromkeys(["ID_POLIGONO", "CONJUNTO", "Estado", "Municipio", "lon", "lat",
+                               "x_m", "y_m", "area_ha_geom", Y] + COLS))   # dict.fromkeys quita duplicados
+tab = df[cols_tab].copy()
 tab.loc[tab.CONJUNTO == "ENTRENAMIENTO", "pred"] = pd.Series(oof, index=train["ID_POLIGONO"]).reindex(
     tab.loc[tab.CONJUNTO == "ENTRENAMIENTO", "ID_POLIGONO"]).to_numpy()   # fuera de muestra
 tab.loc[tab.CONJUNTO == "PREDICCION", "pred"] = pd.Series(pred, index=test["ID_POLIGONO"]).reindex(
