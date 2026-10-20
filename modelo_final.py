@@ -9,7 +9,7 @@ from sklearn.model_selection import GroupKFold, RepeatedKFold
 from sklearn.pipeline import make_pipeline
 from sklearn.preprocessing import StandardScaler
 
-CONFIG_FINAL = "res ridge S2+FEN+GEO"  # cambia tras ver la tabla (elige la más simple que no sea peor dentro del ruido)
+CONFIG_FINAL = "res ridge S2+FEN+GEO"  # cambia tras ver la tabla 
 K_SHRINK, K_VEC = 5, 5
 Y = "RENDIMIENTO_T_HA"
 rng = np.random.default_rng(0)

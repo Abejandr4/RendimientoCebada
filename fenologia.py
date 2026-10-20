@@ -34,8 +34,8 @@ feno = pd.DataFrame(filas)
 feno = feno.rename(columns={c: c + "_s2" for c in feno.columns if c != "ID_POLIGONO"})
 feno.to_csv("fenologia_features.csv", index=False)
 
-# ---------- Diagnósticos
-print("Forma:", feno.shape, "(debe tener 197 filas)")
+# Diagnósticos
+print("Forma:", feno.shape, "(deberia tener 197 filas)")
 print("\nNaN por columna:\n", feno.isna().mean().round(2).to_string())
 print("\n", feno.drop(columns="ID_POLIGONO").describe().T[["mean", "std", "min", "max"]].round(1).to_string())
 
